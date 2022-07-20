@@ -3,6 +3,7 @@ const { join } = require("path");
 const express = require("express");
 const nodemailer = require("nodemailer");
 const { methodOverride } = require("./utils");
+const rootRoute = require("./routes/root");
 const mailerRoute = require("./routes/mailer");
 require("dotenv").config();
 
@@ -15,6 +16,8 @@ app.set("view engine", "ejs");
 app.set("views", join(__dirname, "views/"));
 
 // GENERAL MIDDLEWARE
+// serve static files (public)
+app.use(express.static(join(__dirname, "public")));
 // parse form data in req body
 app.use(express.urlencoded({ extended: true }));
 // parse json in req body
@@ -24,6 +27,7 @@ app.use(methodOverride);
 
 // ROUTES
 app.use("/mailer", mailerRoute);
+app.use("/", rootRoute);
 
 // SERVER
 const port = process.env.PORT || 3000;

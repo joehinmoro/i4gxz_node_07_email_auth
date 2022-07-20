@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
     // define view data
     const title = "Send Mail";
     // render create form view
-    res.render("mailer", { title });
+    res.render("mailer/new", { title });
 });
 
 // 2. CREATE route (POST)
