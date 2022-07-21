@@ -55,7 +55,7 @@ body {
   height: 100%;
 }
 
-body {
+.main {
   display: flex;
   align-items: center;
   padding-top: 40px;
@@ -72,10 +72,22 @@ body {
   z-index: 2;
 }
 
-.form-signin input[type="email"] {
+.form-signin input[name="from"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.form-signin input[name="to"] {
+  margin-bottom: -1px;
+  /* border-bottom-right-radius: 0; */
+  border-radius: 0;
+}
+
+.form-signin input[name="subject"] {
+  margin-bottom: -1px;
+  /* border-bottom-right-radius: 0; */
+  border-radius: 0;
 }
 
 .form-signin textarea {
@@ -84,6 +96,3 @@ body {
   border-top-right-radius: 0;
 }
 
-.tall{
-  height: 1000000px;
-}

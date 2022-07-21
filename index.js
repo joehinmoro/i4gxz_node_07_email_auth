@@ -1,10 +1,7 @@
 // IMPORTS
 const { join } = require("path");
 const express = require("express");
-const nodemailer = require("nodemailer");
-const { methodOverride } = require("./utils");
-const rootRoute = require("./routes/root");
-const mailerRoute = require("./routes/mailer");
+const { mailerRoute, rootRoute, _404Route } = require("./routes");
 require("dotenv").config();
 
 // APP AND SETTINGS
@@ -22,12 +19,14 @@ app.use(express.static(join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 // parse json in req body
 app.use(express.json());
-// override posty request to appropriate method
-app.use(methodOverride);
 
 // ROUTES
+// mailer route (main)
 app.use("/mailer", mailerRoute);
-app.use("/", rootRoute);
+// root route (redirects to /mailer)
+app.all("/", rootRoute);
+// general 404 route
+app.use(_404Route);
 
 // SERVER
 const port = process.env.PORT || 3000;
