@@ -22,10 +22,10 @@ const createMail = (req, res) => {
             clientId: process.env.OAUTH_CLIENTID,
             clientSecret: process.env.OAUTH_CLIENT_SECRET,
             refreshToken: process.env.OAUTH_REFRESH_TOKEN,
-            // pass: process.env.MAIL_PASSWORD,
         },
     });
 
+    // create mail options
     const mailOptions = {
         from: "joehinmoro@gmail.com",
         to,
@@ -33,12 +33,17 @@ const createMail = (req, res) => {
         text,
     };
 
+    // send mail using transporter
     transporter.sendMail(mailOptions, (err, data) => {
         if (err) {
+            // handle error
             console.log("Error " + err);
+            // render mailer error page
             res.render("mailer/error", { title: "Something Went Wrong" });
         } else {
+            // if email send success
             console.log("Email sent successfully");
+            // render mailer success page
             res.render("mailer/success", { title: "Mail Sent" });
         }
     });

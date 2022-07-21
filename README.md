@@ -1,5 +1,22 @@
 # i4gxz_node_07_email_auth
 
-# Good Day Sir/Ma... Please, I was busy with work through the weekend and I didn't have time to complete this task... I'm currently working on it and I will push the finished work as soon as I am done. Thank you for your understanding...
+## Documentation
 
-## I'm Currently working on the read me file right now
+This app/package provides functionality to send emails from and to Gmail emails.
+Emails are authenticated by OAUTH2 provided by Google Cloud.
+
+### Sending Emails
+
+The following route serves the email create form:
+
+`/mailer`
+
+**Form View**
+
+![view form](/assets/form.png)
+
+### On Success
+
+**Screenshot of Received Email**
+
+![view form](/assets/gmail.png)
